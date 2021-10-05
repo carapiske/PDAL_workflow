@@ -1,0 +1,16 @@
+{
+    "pipeline": [
+        "SCB/kost_lidar_data/ASO_2016/2016_05_18/WGS84_G1762_to_NAD83_NAVD88/mcc_part_b_tile_004_000.las",
+        {
+            "type": "filters.range",
+            "limits": "Z[0.15:2]"
+        },
+        {
+            "filename": "lidar_processing/python_scripts/PDAL/test_file/mcc_part_b_tile_004_000.asc",
+            "gdaldriver": "XYZ",
+            "output_type": "count",
+            "resolution": 0.01,
+            "type": "writers.gdal"
+        }
+    ]
+}

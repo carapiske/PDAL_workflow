@@ -1,0 +1,13 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las",
+            "filename": "lidar_processing/python_scripts/PDAL/test_las/ncalm_2014_732000_4373000.las"
+        },
+        {
+            "type": "writers.las",
+            "a_srs": "EPSG:4326",
+            "filename": "lidar_processing/python_scripts/PDAL/test_las/ASO_USCAMB20180425f1a1_180425_1_dem_filter.las"
+        }
+    ]
+}

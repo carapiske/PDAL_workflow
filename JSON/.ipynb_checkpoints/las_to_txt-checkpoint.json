@@ -1,0 +1,15 @@
+{
+    "pipeline": [
+        "/Volumes/cpiske/lidar_processing/python_scripts/PDAL/test_las/mcc_part_b_tile_004_000.las",
+        {
+            "type": "readers.las"
+        },
+        {
+            "filename": "/Volumes/cpiske/lidar_processing/python_scripts/PDAL/test_las/mcc_part_b_tile_004_000Test.asc",
+            "type": "writers.text",
+            "fromat": "geojson",
+            "order": "X,Y,Z",
+            "keep_unspecified": "false"
+        }
+    ]
+}

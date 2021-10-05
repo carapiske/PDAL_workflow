@@ -1,0 +1,16 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las",
+            "override_srs": "EPSG:4326",
+            "filename": "/Volumes/cpiske/lidar_processing/python_scripts/PDAL/test_las/mcc_part_b_tile_004_000.las"
+        },
+        {
+            "type": "writers.text",
+            "format": "geojson",
+            "order": "X,Y,Z",
+            "keep_unspecified": "false",
+            "filename": "/Volumes/cpiske/lidar_processing/python_scripts/PDAL/test_las/mcc_part_b_tile_004_000Test.asc"
+        }
+    ]
+}
