@@ -20,8 +20,7 @@
             "ignore": "Classification[7:7]",
             "slope": 0.3,
             "window": 16,
-            "threshold": 0.15,
-            "scalar": 1.2
+            "scalar": 1
         },
         {
             "type": "filters.range",
