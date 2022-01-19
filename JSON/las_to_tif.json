@@ -4,10 +4,9 @@
             "type": "readers.las"
         },
         {
-            "gdaldriver": "GTiff",
+            "type": "writers.gdal",
             "output_type": "mean",
-            "resolution": 10,
-            "type": "writers.gdal"
+            "resolution": "1.0"
         }
     ]
 }
