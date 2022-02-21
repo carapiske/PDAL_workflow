@@ -1,0 +1,15 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las",
+            "filename": "lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/vertical_bias/rasterize/ASO_20160417_hag.laz"
+        },
+        {
+            "type": "writers.text",
+            "format": "csv",
+            "order": "Z",
+            "keep_unspecified": "false",
+            "filename": "lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/vertical_bias/rasterize/ASO_20160417_hag.csv"
+        }
+    ]
+}

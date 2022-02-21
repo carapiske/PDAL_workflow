@@ -1,0 +1,13 @@
+{
+    "pipeline": [
+        {
+            "type": "filters.hag_dem",
+            "raster": "SCB/NCALM_2014_bulk_be/NCALM_2014_be/merge/mergedDEM.tif",
+            "zero_ground": "false"
+        },
+        {
+            "type": "filters.ferry",
+            "dimensions": "HeightAboveGround=>Z"
+        }
+    ]
+}

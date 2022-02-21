@@ -1,16 +1,18 @@
 {
     "pipeline": [
         {
-            "type": "readers.las"
+            "type": "readers.las",
+            "filename": "lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/ASO_to_NAVD88/test1/apr_test_hor.laz"
         },
         {
             "type": "filters.reprojection",
             "in_srs": "EPSG:26910",
-            "out_srs": "+init=epsg:26910 +geoidgrids=/Volumes/cpiske/lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/g2012bu5.gtx"
+            "out_srs": "+init=EPSG:26910 +geoidgrids=/Volumes/cpiske/lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/g2012bu5.gtx +t_epoch=2014.441"
         },
         {
             "type": "writers.las",
-            "a_srs": "EPSG:5498"
+            "a_srs": "EPSG:26910+5703",
+            "filename": "lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/ASO_to_NAVD88/test1/apr_test_vert.laz"
         }
     ]
 }

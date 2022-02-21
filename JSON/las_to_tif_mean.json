@@ -5,8 +5,9 @@
         },
         {
             "type": "writers.gdal",
-            "output_type": "count",
-            "resolution": "1.0"
+            "output_type": "mean",
+            "resolution": "1.0",
+            "radius": "0.7"
         }
     ]
 }
