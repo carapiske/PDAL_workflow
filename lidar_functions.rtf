@@ -1,0 +1,111 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2636
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red157\green0\blue210;\red255\green255\blue255;\red0\green0\blue0;
+\red32\green108\blue135;\red15\green112\blue1;\red0\green0\blue255;\red101\green76\blue29;\red0\green0\blue109;
+\red144\green1\blue18;\red19\green118\blue70;}
+{\*\expandedcolortbl;;\cssrgb\c68627\c0\c85882;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;
+\cssrgb\c14902\c49804\c60000;\cssrgb\c0\c50196\c0;\cssrgb\c0\c0\c100000;\cssrgb\c47451\c36863\c14902;\cssrgb\c0\c6275\c50196;
+\cssrgb\c63922\c8235\c8235;\cssrgb\c3529\c52549\c34510;}
+\margl1440\margr1440\vieww50700\viewh25180\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 import\cf0 \strokec4  \cf5 \strokec5 subprocess\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 import\cf0 \strokec4  \cf5 \strokec5 os\cf0 \cb1 \strokec4 \
+\cf2 \cb3 \strokec2 import\cf0 \strokec4  \cf5 \strokec5 json\cf0 \cb1 \strokec4 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 # rename a file with the lower left x and y defined as the corner point of the bounding box (add resolution/2 to get the center point of the box) \cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # input - full lidar file path (i.e. 'lidar_files/filename.laz'), str\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 rename_llx_lly\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 pdal_info_command\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'info'\cf0 \strokec4 , \cf9 \strokec9 full_path\cf0 \strokec4 , \cf10 \strokec10 '--metadata'\cf0 \strokec4 ] \cf6 \strokec6 # set up pdal command\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 pdal_info_results\cf0 \strokec4  = \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 pdal_info_command\cf0 \strokec4 , \cf9 \strokec9 stdout\cf0 \strokec4  = \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf9 \strokec9 PIPE\cf0 \strokec4 ) \cf6 \strokec6 # stout (standard out), PIPE indicates that a new pipe to the child should be created, execute command\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 pdal_info_dict\cf0 \strokec4  = \cf5 \strokec5 json\cf0 \strokec4 .\cf8 \strokec8 loads\cf0 \strokec4 (\cf9 \strokec9 pdal_info_results\cf0 \strokec4 .\cf9 \strokec9 stdout\cf0 \strokec4 .\cf8 \strokec8 decode\cf0 \strokec4 ()) \cf6 \strokec6 # save metadata to dict\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 pathname\cf0 \strokec4  = \cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 dirname\cf0 \strokec4 (\cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 realpath\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 )) \cf6 \strokec6 # isolate only pathname (i.e. 'lidar/lidar_files')\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 name\cf0 \strokec4  = \cf9 \strokec9 pathname\cf0 \strokec4  + \cf10 \strokec10 '/'\cf0 \strokec4  + \cf5 \strokec5 str\cf0 \strokec4 (\cf8 \strokec8 round\cf0 \strokec4 (\cf9 \strokec9 pdal_info_dict\cf0 \strokec4 [\cf10 \strokec10 'metadata'\cf0 \strokec4 ][\cf10 \strokec10 'minx'\cf0 \strokec4 ])) +\cf10 \strokec10 "_"\cf0 \strokec4 + \cf5 \strokec5 str\cf0 \strokec4 (\cf8 \strokec8 round\cf0 \strokec4 (\cf9 \strokec9 pdal_info_dict\cf0 \strokec4 [\cf10 \strokec10 'metadata'\cf0 \strokec4 ][\cf10 \strokec10 'miny'\cf0 \strokec4 ]))+\cf9 \strokec9 full_path\cf0 \strokec4 [-\cf11 \strokec11 4\cf0 \strokec4 :] \cf6 \strokec6 # create string with full pathname and llx and lly from dict\cf0 \cb1 \strokec4 \
+\cb3     \cf5 \strokec5 os\cf0 \strokec4 .\cf8 \strokec8 rename\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 , \cf9 \strokec9 name\cf0 \strokec4 ) \cf6 \strokec6 # rename file\cf0 \cb1 \strokec4 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 # rename a file with additional metadata at the beginning of the filename\cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # flight organization, watershed, date of flight (i.e. ASO_ICB_20140423)\cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # additional text will be taken from the flight directory name, could hardcode additional string instead of using folder name\cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # input - full lidar file path (i.e. 'lidar/lidar_files/filename.laz'), str\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 add_str_to_filename\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 filename\cf0 \strokec4  = \cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 basename\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 ) \cf6 \strokec6 # isolate only filename (i.e 'filename.laz')\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 pathname\cf0 \strokec4  = \cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 dirname\cf0 \strokec4 (\cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 realpath\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 )) \cf6 \strokec6 # isolate only path name (i.e. 'lidar/lidar_files')\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 add_str\cf0 \strokec4  = \cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 normpath\cf0 \strokec4 (\cf9 \strokec9 pathname\cf0 \strokec4 ) \cf6 \strokec6 # split up the path name (i.e. full path)\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 add_str\cf0 \strokec4  = [\cf9 \strokec9 i\cf0 \strokec4  \cf2 \strokec2 for\cf0 \strokec4  \cf9 \strokec9 i\cf0 \strokec4  \cf2 \strokec2 in\cf0 \strokec4  \cf9 \strokec9 add_str\cf0 \strokec4 .split(\cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 sep\cf0 \strokec4 ) \cf2 \strokec2 if\cf0 \strokec4  (\cf9 \strokec9 i\cf0 \strokec4 .startswith(\cf10 \strokec10 'ASO_'\cf0 \strokec4 ) \cf7 \strokec7 or\cf0 \strokec4  \cf9 \strokec9 i\cf0 \strokec4 .startswith(\cf10 \strokec10 'NCALM_'\cf0 \strokec4 ) \cf7 \strokec7 or\cf0 \strokec4  \cf9 \strokec9 i\cf0 \strokec4 .startswith(\cf10 \strokec10 'WSI_'\cf0 \strokec4 ))] \cf6 \strokec6 # (i.e. 'ASO_SCB_2016')\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 rename\cf0 \strokec4  = \cf9 \strokec9 pathname\cf0 \strokec4  + \cf10 \strokec10 '/'\cf0 \strokec4 + \cf9 \strokec9 add_str\cf0 \strokec4 [\cf11 \strokec11 0\cf0 \strokec4 ] + \cf10 \strokec10 '_'\cf0 \strokec4 + \cf9 \strokec9 filename\cf0 \strokec4  \cf6 \strokec6 # add string to full pathname \cf0 \cb1 \strokec4 \
+\cb3     \cf5 \strokec5 os\cf0 \strokec4 .\cf8 \strokec8 rename\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 , \cf9 \strokec9 rename\cf0 \strokec4 ) \cf6 \strokec6 # rename file\cf0 \cb1 \strokec4 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 # save the tile index of a file to a new folder\cf0 \cb1 \strokec4 \
+\
+\cf6 \cb3 \strokec6 # input - full lidar/sqlite file patsh (i.e. 'lidar/lidar_files/filename.laz'), str\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 create_tindex\cf0 \strokec4 (\cf9 \strokec9 input_path\cf0 \strokec4 , \cf9 \strokec9 output_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 boundary_cmd\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'tindex'\cf0 \strokec4 , \cf10 \strokec10 'create'\cf0 \strokec4 , \cf10 \strokec10 '--tindex'\cf0 \strokec4 , \cf9 \strokec9 output_path\cf0 \strokec4 , \cf10 \strokec10 '--filespec'\cf0 \strokec4 , \cf9 \strokec9 input_path\cf0 \strokec4 , \cf10 \strokec10 '-f'\cf0 \strokec4 , \cf10 \strokec10 'SQLite'\cf0 \strokec4 ]\cb1 \
+\cb3     \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 boundary_cmd\cf0 \strokec4 )\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 # copy file based on llx and lly into output filename. Note that this function relies on the assumption that files follow the structure \cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # input_las 'folder1/folder2/folder3a/filename.laz' and output_las 'folder1/folder2/folder3b/filename.laz'\cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # if files are held in a different file structure, code must be changed to accomodate change\cf0 \cb1 \strokec4 \
+\cf6 \cb3 \strokec6 # input - full path to a las file\cf0 \cb1 \strokec4 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 copy_las_by_ext_ICB\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 pdal_info_command\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'info'\cf0 \strokec4 , \cf9 \strokec9 full_path\cf0 \strokec4 , \cf10 \strokec10 '--metadata'\cf0 \strokec4 ] \cf6 \strokec6 # set up pdal command\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 pdal_info_results\cf0 \strokec4  = \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 pdal_info_command\cf0 \strokec4 , \cf9 \strokec9 stdout\cf0 \strokec4  = \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf9 \strokec9 PIPE\cf0 \strokec4 ) \cf6 \strokec6 # stout (standard out), PIPE indicates that a new pipe to the child should be created, execute command\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 pdal_info_dict\cf0 \strokec4  = \cf5 \strokec5 json\cf0 \strokec4 .\cf8 \strokec8 loads\cf0 \strokec4 (\cf9 \strokec9 pdal_info_results\cf0 \strokec4 .\cf9 \strokec9 stdout\cf0 \strokec4 .\cf8 \strokec8 decode\cf0 \strokec4 ()) \cf6 \strokec6 # save metadata to dict\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 minx\cf0 \strokec4  = \cf8 \strokec8 round\cf0 \strokec4 (\cf9 \strokec9 pdal_info_dict\cf0 \strokec4 [\cf10 \strokec10 'metadata'\cf0 \strokec4 ][\cf10 \strokec10 'minx'\cf0 \strokec4 ])\cb1 \
+\cb3     \cf9 \strokec9 miny\cf0 \strokec4  = \cf8 \strokec8 round\cf0 \strokec4 (\cf9 \strokec9 pdal_info_dict\cf0 \strokec4 [\cf10 \strokec10 'metadata'\cf0 \strokec4 ][\cf10 \strokec10 'miny'\cf0 \strokec4 ])\cb1 \
+\cb3     \cf2 \strokec2 if\cf0 \strokec4  (\cf9 \strokec9 minx\cf0 \strokec4  <= \cf11 \strokec11 288000\cf0 \strokec4  \cf7 \strokec7 and\cf0 \strokec4  \cf9 \strokec9 minx\cf0 \strokec4  >= \cf11 \strokec11 265000\cf0 \strokec4 ):\cb1 \
+\cb3         \cf2 \strokec2 if\cf0 \strokec4  (\cf9 \strokec9 miny\cf0 \strokec4  >= \cf11 \strokec11 4165000\cf0 \strokec4  \cf7 \strokec7 and\cf0 \strokec4  \cf9 \strokec9 miny\cf0 \strokec4 <= \cf11 \strokec11 4180000\cf0 \strokec4 ):\cb1 \
+\cb3             \cf9 \strokec9 input_las\cf0 \strokec4  = \cf9 \strokec9 full_path\cf0 \cb1 \strokec4 \
+\cb3             \cf9 \strokec9 output_las\cf0 \strokec4  = \cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 dirname\cf0 \strokec4 (\cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 realpath\cf0 \strokec4 (\cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 dirname\cf0 \strokec4 (\cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 realpath\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 )))) + \cf10 \strokec10 '/ICB_tiles/'\cf0 \strokec4 + \cf5 \strokec5 os\cf0 \strokec4 .\cf9 \strokec9 path\cf0 \strokec4 .\cf8 \strokec8 basename\cf0 \strokec4 (\cf9 \strokec9 full_path\cf0 \strokec4 )\cb1 \
+\cb3             \cf9 \strokec9 pdal_copy_cmd\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 ,\cf10 \strokec10 'translate'\cf0 \strokec4 , \cf9 \strokec9 input_las\cf0 \strokec4 , \cf9 \strokec9 output_las\cf0 \strokec4 ]\cb1 \
+\cb3             \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 pdal_copy_cmd\cf0 \strokec4 )\cb1 \
+\cb3     \cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 ground_filter\cf0 \strokec4 (\cf9 \strokec9 full_input_path\cf0 \strokec4 , \cf9 \strokec9 full_output_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 range_cmd\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'translate'\cf0 \strokec4 , \cf9 \strokec9 full_input_path\cf0 \strokec4 ,  \cf9 \strokec9 full_output_path\cf0 \strokec4 , \cf10 \strokec10 '--json'\cf0 \strokec4 ,\cf10 \strokec10 '/Volumes/cpiske/lidar_processing/python_scripts/PDAL_workflow/JSON/ground_filter_preClassified.json'\cf0 \strokec4 ]\cb1 \
+\cb3     \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 range_cmd\cf0 \strokec4 )\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 rasterize_mean\cf0 \strokec4 (\cf9 \strokec9 full_input_las\cf0 \strokec4 , \cf9 \strokec9 full_output_tif\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 writer\cf0 \strokec4  = \cf10 \strokec10 '--writers.gdal.filename='\cf0 \strokec4 +\cf9 \strokec9 full_output_tif\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 reader\cf0 \strokec4  = \cf10 \strokec10 '--readers.las.filename='\cf0 \strokec4 +\cf9 \strokec9 full_input_las\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 rasterize_command\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'pipeline'\cf0 \strokec4 , \cf10 \strokec10 '/Volumes/cpiske/lidar_processing/python_scripts/PDAL_workflow/JSON/las_to_tif_mean.json'\cf0 \strokec4 , \cf9 \strokec9 writer\cf0 \strokec4 , \cf9 \strokec9 reader\cf0 \strokec4 ]\cb1 \
+\cb3     \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 rasterize_command\cf0 \strokec4 )\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 rasterize_count\cf0 \strokec4 (\cf9 \strokec9 full_input_las\cf0 \strokec4 , \cf9 \strokec9 full_output_tif\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 writer\cf0 \strokec4  = \cf10 \strokec10 '--writers.gdal.filename='\cf0 \strokec4 +\cf9 \strokec9 full_output_tif\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 reader\cf0 \strokec4  = \cf10 \strokec10 '--readers.las.filename='\cf0 \strokec4 +\cf9 \strokec9 full_input_las\cf0 \cb1 \strokec4 \
+\cb3     \cf9 \strokec9 rasterize_command\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'pipeline'\cf0 \strokec4 , \cf10 \strokec10 '/Volumes/cpiske/lidar_processing/python_scripts/PDAL_workflow/JSON/las_to_tif_count.json'\cf0 \strokec4 , \cf9 \strokec9 writer\cf0 \strokec4 , \cf9 \strokec9 reader\cf0 \strokec4 ]\cb1 \
+\cb3     \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 rasterize_command\cf0 \strokec4 )\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 HAG_dem\cf0 \strokec4 (\cf9 \strokec9 full_input_path\cf0 \strokec4 , \cf9 \strokec9 full_output_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 HAG_cmd\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'translate'\cf0 \strokec4 ,\cf9 \strokec9 full_input_path\cf0 \strokec4 , \cf9 \strokec9 full_output_path\cf0 \strokec4 , \cf10 \strokec10 '--json'\cf0 \strokec4 , \cf10 \strokec10 '/Volumes/cpiske/lidar_processing/python_scripts/PDAL_workflow/JSON/heigh_above_ground_vegStrata.json'\cf0 \strokec4 ]\cb1 \
+\cb3     \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 HAG_cmd\cf0 \strokec4 )\cb1 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf7 \cb3 \strokec7 def\cf0 \strokec4  \cf8 \strokec8 filter_pts_neg0pt15_0pt15\cf0 \strokec4 (\cf9 \strokec9 full_input_path\cf0 \strokec4 , \cf9 \strokec9 full_output_path\cf0 \strokec4 ):\cb1 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3     \cf9 \strokec9 strata_cmd\cf0 \strokec4  = [\cf10 \strokec10 'pdal'\cf0 \strokec4 , \cf10 \strokec10 'translate'\cf0 \strokec4 , \cf9 \strokec9 full_input_path\cf0 \strokec4 ,  \cf9 \strokec9 full_output_path\cf0 \strokec4 , \cf10 \strokec10 '--json'\cf0 \strokec4 ,\cf10 \strokec10 '/Volumes/cpiske/lidar_processing/python_scripts/PDAL_workflow/JSON/filter_range_neg0pt15_0pt15.json'\cf0 \strokec4 ]\cb1 \
+\cb3     \cf5 \strokec5 subprocess\cf0 \strokec4 .\cf8 \strokec8 run\cf0 \strokec4 (\cf9 \strokec9 strata_cmd\cf0 \strokec4 )\cb1 \
+}

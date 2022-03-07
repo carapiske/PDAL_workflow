@@ -1,0 +1,13 @@
+{
+    "pipeline": [
+        {
+            "type": "filters.hag_dem",
+            "raster": "/Volumes/Piske_lidar/SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/NCALM_SCB_2014_BE.tif",
+            "zero_ground": "false"
+        },
+        {
+            "type": "filters.ferry",
+            "dimensions": "HeightAboveGround=>Z"
+        }
+    ]
+}

@@ -2,17 +2,17 @@
     "pipeline": [
         {
             "type": "readers.las",
-            "filename": "lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/ASO_to_NAVD88/test1/apr_test_hor.laz"
+            "filename": "cpiske/lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/NCALM2014_toNAD83NAD83/2014/original/NCALM_SCB_2014_734000_4365000.laz"
         },
         {
             "type": "filters.reprojection",
-            "in_srs": "EPSG:26910",
-            "out_srs": "+init=EPSG:26910 +geoidgrids=/Volumes/cpiske/lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/g2012bu5.gtx +t_epoch=2014.441"
+            "in_srs": "+proj=utm +zone=10 +ellps=GRS80 +datum=NAD83 +units=m +no_defs",
+            "out_srs": "+proj=utm +zone=10 +datum=NAD83 +units=m +vunits=m +no_defs"
         },
         {
             "type": "writers.las",
-            "a_srs": "EPSG:26910+5703",
-            "filename": "lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/ASO_to_NAVD88/test1/apr_test_vert.laz"
+            "a_srs": "+proj=utm +zone=10 +datum=NAD83 +units=m +vunits=m +no_defs",
+            "filename": "cpiske/lidar_processing/PDAL_testFiles_tutorials/test_las/SCB/reproject/NCALM2014_toNAD83NAD83/2014/test2/NCALM_SCB_2014_734000_4365000.laz"
         }
     ]
 }
