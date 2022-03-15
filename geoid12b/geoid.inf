@@ -1,0 +1,6 @@
+#released date of this file
+released=10/23/2012
+
+#Supported GEOID models
+#Note: Always define the newest GEOID model first.
+geoid_models=GEOID12B,GEOID12A,GEOID09,GEOID06,GEOID03,GEOID99,GEOID96

@@ -6,7 +6,7 @@
 import subprocess
 import os
 import json
-json_path = 
+json_path = '/G/piske_processing/PDAL_workflow/JSON/'
 
 ##########
 # RENAME
