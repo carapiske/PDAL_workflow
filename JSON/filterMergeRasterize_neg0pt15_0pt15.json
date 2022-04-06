@@ -1,0 +1,37 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/HAG/NCALM_SCB_2014_730000_4365000.las"
+        },
+        {
+            "type": "filters.range",
+            "limits": "Z[-0.15,0.15)",
+            "tag": "A_0"
+        },
+        {
+            "type": "readers.las",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/HAG/NCALM_SCB_2014_730000_4363000.las"
+        },
+        {
+            "type": "filters.range",
+            "limits": "Z[-0.15,0.15)",
+            "tag": "A_1"
+        },
+        {
+            "type": "filters.merge",
+            "tag": "merged",
+            "inputs": [
+                "A_0",
+                "A_1"
+            ]
+        },
+        {
+            "type": "writers.gdal",
+            "output_type": "count",
+            "resolution": "1.0",
+            "radius": "0.7",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/veg_classes/vegStrat_neg0pt15_0pt15.tif"
+        }
+    ]
+}

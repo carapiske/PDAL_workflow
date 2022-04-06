@@ -4,9 +4,14 @@
             "type": "readers.las"
         },
         {
+            "type": "filters.range",
+            "limits": "Z[2:), Classification[2:2]"
+        },
+        {
             "type": "writers.gdal",
             "output_type": "count",
-            "resolution": "1.0"
+            "resolution": "1.0",
+            "radius": "0.7"
         }
     ]
 }

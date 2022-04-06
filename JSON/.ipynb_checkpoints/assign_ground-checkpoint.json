@@ -1,0 +1,18 @@
+{
+    "pipeline": [
+        {
+            "type": "filters.assign",
+            "assignment": "Classification[:]=0"
+        },
+        {
+            "type": "filters.elm"
+        },
+        {
+            "type": "filters.outlier"
+        },
+        {
+            "type": "filters.smrf",
+            "ignore": "Classification[7:7]"
+        }
+    ]
+}

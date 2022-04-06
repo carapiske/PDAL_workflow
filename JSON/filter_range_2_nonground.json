@@ -2,7 +2,7 @@
     "pipeline": [
         {
             "type": "filters.range",
-            "limits": "Z[2:), Classification![2:2]"
+            "limits": "Z[2:, Classification![2:2])"
         }
     ]
 }

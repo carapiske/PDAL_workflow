@@ -1,8 +1,0 @@
-{
-    "pipeline": [
-        {
-            "type": "filters.range",
-            "limits": "Z[1700:2700]"
-        }
-    ]
-}

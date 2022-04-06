@@ -1,8 +1,0 @@
-{
-    "pipeline": [
-        {
-            "type": "filters.returns",
-            "groups": "last,only"
-        }
-    ]
-}

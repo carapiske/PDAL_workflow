@@ -47,3 +47,13 @@ Snow-off Flights
 **retile_uo: use original tiles instead of retiled files
 **strata classes (rasters) filtered in two stages to ensure GDAL captures logical expression
 ```
+
+See PDAL documentation for more information about the structure of pipelines. Here, instead of using python PDAL bindings, we run processes using the subprocess module. We use a combination of functions that call json files and processes that directly call PDAL functions depending on the process.
+
+Parallelization is initiated using multiple processes. Because the modules require functions to be called from imported packages, see lidar_functions.py for functions. Typically these functions execute pipelines using json files which allows us to alter json files in the script without altering the lidar_functions packages
+
+
+# Raster Processing Workflow
+
+Separate scripts were created for raster and LAS files. 
+This script processes raster files created from the rasterization of LAS files. The goal is to run pixel-pixel calculations to retreive snow depth based on canopy structure classifications. 

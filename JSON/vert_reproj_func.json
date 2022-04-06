@@ -1,0 +1,10 @@
+{
+    "pipeline": [
+        "MRB/Merced_lidar/ASO/ASO_MRB_20210429/retile/ASO_MRB_20210429_673354_447052.laz",
+        {
+            "type": "filters.reprojection",
+            "in_srs": "+proj=aea +lat_1=38.5 +lat_2=45.5 +lat_0=42+lon_0=-112 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs",
+            "out_srs": "EPSG:32611"
+        }
+    ]
+}

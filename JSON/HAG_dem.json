@@ -2,12 +2,16 @@
     "pipeline": [
         {
             "type": "filters.hag_dem",
-            "raster": "SCB/NCALM_2014_bulk_be/NCALM_2014_be/merge/mergedDEM.tif",
+            "raster": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/NCALM_2014_BE.tif",
             "zero_ground": "false"
         },
         {
             "type": "filters.ferry",
             "dimensions": "HeightAboveGround=>Z"
+        },
+        {
+            "type": "filters.range",
+            "limits": "Z[-0.2:70]"
         }
     ]
 }
