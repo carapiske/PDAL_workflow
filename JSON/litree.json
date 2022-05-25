@@ -1,0 +1,28 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/NAD83_NAD83_epoch2010/NCALM_SCB_2014_733000_4365000.las"
+        },
+        {
+            "type": "filters.ferry",
+            "dimensions": "Z => HeightAboveGround"
+        },
+        {
+            "type": "filters.sort",
+            "dimension": "HeightAboveGround",
+            "order": "DESC"
+        },
+        {
+            "type": "filters.litree"
+        },
+        {
+            "type": "writers.gdal",
+            "output_type": "mean",
+            "resolution": "1.0",
+            "dimension": "ClusterID",
+            "radius": "0.7",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/cluster/test.tif"
+        }
+    ]
+}

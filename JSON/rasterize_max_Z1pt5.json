@@ -1,0 +1,17 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las"
+        },
+        {
+            "type": "filters.range",
+            "limits": "Z[:1.5]"
+        },
+        {
+            "type": "writers.gdal",
+            "output_type": "max",
+            "resolution": "1.0",
+            "radius": "0.7"
+        }
+    ]
+}

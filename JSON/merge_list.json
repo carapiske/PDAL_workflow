@@ -1,0 +1,11 @@
+{
+    "pipeline": [
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/HAG/WSI_MRB_20111017_271393_4176714.las",
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/HAG/WSI_MRB_20111017_272393_4178714.las",
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/HAG/WSI_MRB_20111017_272802_4179714.las",
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/HAG/WSI_MRB_20111017_271393_4175714.las",
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/HAG/WSI_MRB_20111017_271393_4174714.las",
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/HAG/WSI_MRB_20111017_271393_4172714.las",
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/vertical_bias_correction/ASO_MRB_20210429_vbcMerged.tif"
+    ]
+}

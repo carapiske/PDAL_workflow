@@ -1,0 +1,79 @@
+---
+title: "Investigating Snow-Forest Intercations Using Lidar - Produce Canopy Metrics"
+output: html_notebook
+---
+
+By: Cara Piske, 2022 M.S. Student, University of Nevada Reno
+
+Advisor: Dr. Adrian Harpold, Committee: Dr. Gabrielle Boisrame, Dr. Rosemary Carroll
+
+The goal of this code is to create canopy metrics to use in statistical analyses.
+
+See: https://r-lidar.github.io/lidRbook/index.html
+
+```{r}
+# import libraries, wet WD
+library(lidR)
+library(raster)
+```
+
+
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = '/Volumes/Piske_lidar')
+```
+
+
+# Local Maximum Filter on a CHM
+
+
+```{r}
+CHM <- raster('SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/CHM/NCALM_2014_CHM_max.tif')
+projection(CHM) <- '+proj=utm +zone=10 +datum=WGS84 +units=m +no_defs'
+CHM_locateTrees <- locate_trees(CHM, lmf(5))
+
+```
+
+class      : Extent 
+xmin       : 734043.2 
+xmax       : 734331.1 
+ymin       : 4367520 
+ymax       : 4367858 
+
+```{r}
+
+```
+
+
+
+```{r}
+par(mfrow=c(1,1))
+col <- height.colors(50)
+plot(CHM, main = "CHM", col = col, ext = sm); plot(sf::st_geometry(CHM_locateTrees), add = T, pch =3)
+```
+
+```{r}
+tree_coords <-  sf::st_coordinates(CHM_locateTrees)
+tree_coords_df <- data.frame(tree_coords)
+```
+
+```{r}
+write.csv(tree_coords_df,'SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/tree_coordinates.csv', row.names = FALSE)
+
+```
+
+
+
+```{r}
+counts = raster::rasterize(tree_coords, CHM, fun= 'count')
+```
+
+```{r}
+CHM_locateTrees$geometry
+```
+
+
+
+
+
+

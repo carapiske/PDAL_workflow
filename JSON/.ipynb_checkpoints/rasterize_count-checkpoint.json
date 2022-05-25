@@ -1,0 +1,13 @@
+{
+    "pipeline": [
+        {
+            "type": "readers.las"
+        },
+        {
+            "type": "writers.gdal",
+            "output_type": "count",
+            "resolution": "1.0",
+            "radius": "0.7"
+        }
+    ]
+}

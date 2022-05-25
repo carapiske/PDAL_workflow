@@ -1,0 +1,177 @@
+---
+title: "Investigating Snow-Forest Intercations Using Lidar"
+output: html_notebook
+---
+
+By: Cara Piske, 2022 M.S. Student, University of Nevada Reno
+
+Advisor: Dr. Adrian Harpold, Committee: Dr. Gabrielle Boisrame, Dr. Rosemary Carroll
+
+The goal of this code is to investigate terrain and vegetation interactions with snowpack accumulation and ablation.
+
+```{r}
+# Load necessary packages
+library(randomForest)
+library(raster)
+library(rgdal)
+library(ggplot2)
+library(dplyr)
+library(corrplot)
+library(tidyverse)
+library(broom)
+library(fs)
+library(lubridate)
+library(ggcorrplot)
+library("Hmisc")
+
+
+```
+
+See: <https://towardsdatascience.com/random-forest-in-r-f66adf80ec9>
+
+## Load Data
+
+```{r}
+# Load in rasters as raster datasets
+src_dir = "/Volumes/Piske_lidar/"
+NCALM_2008_SWE <- 
+  raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/SWE/NCALM_SCB_20080210_SWE_30m.tif",sep=""))
+
+NCALM_2014_elev <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_BE_30m.tif",sep=""))
+
+NCALM_2014_aspect <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_aspect_30m.tif",sep=""))
+
+NCALM_2014_slope <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_slope_30m.tif",sep=""))
+
+NCALM_2014_nness <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_nness_30m.tif",sep=""))
+
+NCALM_2014_fVEG <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/",sep=""))
+
+NCALM_2014_DNC <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_DNC_30m.tif",sep=""))
+
+NCALM_2014_clumpSize <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_clumpSize_30m.tif",sep=""))
+
+
+NCALM_2014_CHM <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_2014_CHM_30m.tif",sep=""))
+
+```
+
+```{r}
+# Save to Dataframes
+NCALM_2008_SWE_df <- as.data.frame(NCALM_2008_SWE)
+NCALM_2014_elev_df <- as.data.frame(NCALM_2014_elev)
+NCALM_2014_aspect_df <- as.data.frame(NCALM_2014_aspect)
+NCALM_2014_slope_df <- as.data.frame(NCALM_2014_slope)
+NCALM_2014_nness_df <- as.data.frame(NCALM_2014_nness)
+
+NCALM_2014_fVEG_df <- as.data.frame(NCALM_2014_fVEG)
+NCALM_2014_DNC_df <- as.data.frame(NCALM_2014_DNC)
+NCALM_2014_clumpSize_df <- as.data.frame(NCALM_2014_clumpSize)
+NCALM_2014_CHM_df <- as.data.frame(NCALM_2014_CHM)
+```
+
+```{r}
+#Combine into a single dataframe
+
+terrain_df <- data.frame(NCALM_2014_elev_df, NCALM_2014_aspect_df, NCALM_2014_slope_df, NCALM_2014_nness_df,NCALM_2014_fVEG_df,NCALM_2014_DNC_df,NCALM_2014_CHM_df)
+veg_df <- data.frame(NCALM_2014_fVEG_df,NCALM_2014_DNC_df,NCALM_2014_CHM_df)
+
+colnames(terrain_df) <- c('Elev','Aspect','Slope','Nness','fVeg','DNC','CHM')
+colnames(veg_df) <- c('fVeg','DNC','CHM')
+
+
+NCALM_df <- data.frame(NCALM_2008_SWE_df, NCALM_2014_elev_df, NCALM_2014_aspect_df, NCALM_2014_slope_df, NCALM_2014_nness_df)
+
+```
+
+```{r}
+# summary of data
+summary(terrain_df)
+
+```
+
+```{r}
+# check data types
+sapply(terrain_df, class)
+```
+
+```{r}
+# check for missing values
+colSums(is.na(terrain_df))
+terrain_df <- na.omit(terrain_df)
+```
+
+```{r}
+# make sure it worked
+colSums(is.na(terrain_df))
+```
+
+## Correlation Matrix
+
+See: https://dominicroye.github.io/en/2019/tidy-correlation-tests-in-r/
+
+```{r}
+ggcorrplot(cor(terrain_df))
+
+```
+
+
+```{r}
+cor_data = cor(terrain_df)
+corrplot(cor_data, method="color")
+
+```
+
+```{r}
+corrplot(cor(terrain_df), method = 'shade', order = 'AOE', diag = FALSE)
+
+```
+```{r}
+p_values <- rcorr(as.matrix(terrain))
+
+```
+
+
+
+
+
+
+```{r}
+terrain <- terrain_df[,c("Elev","Slope","Aspect","Nness")]
+veg <- terrain_df[,c("fVeg","DNC","CHM")]
+rownames(veg) <- 1:nrow(veg)    # Assign sequence to row names
+
+```
+
+
+```{r}
+
+
+```
+
+
+
+
+```{r}
+cor.test(x=terrain_df,y=terrain_df)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

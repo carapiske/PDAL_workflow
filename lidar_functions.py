@@ -6,7 +6,50 @@
 import subprocess
 import os
 import json
+import numpy as np
+from osgeo import gdal, ogr, osr
+
 json_path = 'piske_processing/PDAL_workflow/JSON/'
+
+
+##########
+# Change Formats
+##########
+json_full_path = json_path + 'las_to_laz.json'
+
+def las_to_laz(full_input_path, full_output_path):
+    json_full_path = json_path + 'las_to_laz.json'
+    reader = '--readers.las.filename='+ full_input_path
+    writer = '--writers.las.filename='+ full_output_path
+    strata_cmd = ['pdal', 'pipeline', json_full_path, writer, reader]
+    subprocess.run(strata_cmd)
+
+
+##########
+# Check Extents
+##########
+# full_paths - list of full paths of all tiles in a folder
+
+def check_flight_extent(full_paths):
+    min_x = 10000000
+    min_y = 10000000
+    max_x = 0
+    max_y = 0
+    for tiles in full_paths:
+        pdal_info_command = ['pdal', 'info', tiles, '--metadata'] # set up pdal info command
+        pdal_info_results = subprocess.run(pdal_info_command, stdout = subprocess.PIPE) # stout (standard out), PIPE indicates that a new pipe to the child should be created, execute command
+        pdal_info_dict = json.loads(pdal_info_results.stdout.decode()) # save metadata to dictionary
+        if min_x > pdal_info_dict['metadata']['minx']:
+            min_x = pdal_info_dict['metadata']['minx']
+        if min_y > pdal_info_dict['metadata']['miny']:
+            min_y = pdal_info_dict['metadata']['miny']
+        if max_x < pdal_info_dict['metadata']['maxx']:
+            max_x = pdal_info_dict['metadata']['maxx']
+        if max_y < pdal_info_dict['metadata']['maxy']:
+            max_y = pdal_info_dict['metadata']['maxy']
+    extents = [min_x, max_x, min_y, max_y, max_x - min_x, max_y - min_y]
+
+    return(extents)
 
 ##########
 # RENAME
@@ -29,10 +72,8 @@ def rename_llx_lly(full_path):
     new_name = os.path.join(pathname, str(round(pdal_info_dict['metadata']['minx'])) +"_"+ str(round(pdal_info_dict['metadata']['miny']))+full_path[-4:])    
     os.rename(full_path, new_name) # rename file
     
-# run similar function except add in file size. This is helpful for retiled files where there may be redundant llx_lly values and it's helpful to know when to target 
-# files for visualization 
-# file structure will be count (*10^5)_llx_lly
-def rename_llx_lly_b(full_path):
+# run similar function except add in file tag. This is helpful for retiled files where there may be redundant llx_lly values 
+def rename_llx_lly_repeats(full_path):
     
     pdal_info_command = ['pdal', 'info', full_path, '--metadata'] # set up pdal info command
     pdal_info_results = subprocess.run(pdal_info_command, stdout = subprocess.PIPE) # stout (standard out), PIPE indicates that a new pipe to the child should be created, execute command
@@ -95,7 +136,7 @@ def create_tindex(input_path, output_path):
 # if files are held in a different file structure, code must be changed to accomodate change
 # input - full path to a lid file [str]
 # output_path - path to folder with ICB tiles (e.g. 'path/to/folder/') [str]
-def copy_lid_by_ext_ICB(full_path, output_path):
+def copy_by_ext_ICB(full_path, output_path):
     pdal_info_command = ['pdal', 'info', full_path, '--metadata'] # set up pdal command
     pdal_info_results = subprocess.run(pdal_info_command, stdout = subprocess.PIPE) # stout (standard out), PIPE indicates that a new pipe to the child should be created, execute command
     pdal_info_dict = json.loads(pdal_info_results.stdout.decode()) # save metadata to dict
@@ -154,6 +195,37 @@ def HAG_dem(full_input_path, full_output_path):
     strata_cmd = ['pdal', 'translate', full_input_path,  full_output_path, '--json',json_full_path]
     subprocess.run(strata_cmd)
     
+###########################################################
+# Vertical Bias Corrections
+############################################################
+
+###########
+# Calculate Vertical Bias from HAG measurements - where HAG input file is over a snow-off area (e.g. hwy89)
+###########
+# this function is useful where the input file is a direct measure of bias, for example the 2016 ASO flights over SCB
+# where hwy 89 is used as for vbc, in this case points over hwy89 are extracted
+
+# input_las - HAG, las file clipped to the road
+# output_path - path to output files
+# base_name - string, typically flight name
+def calculate_vertical_bias_over_snowOff(input_las):
+    # convert height only to txt file
+    output_las_txt = input_las[:-3]+'csv'
+    txt_cmd = ['pdal', 'translate', input_las, output_las_txt, '-w', 'writers.text', '--writers.text.format=csv','--writers.text.order=Z', '--writers.text.keep_unspecified=false']
+    subprocess.run(txt_cmd)
+    # calculate stats
+    hag_arr = np.loadtxt(output_las_txt,skiprows=1)
+    lowest_10th_per = np.nanpercentile(hag_arr, 10)
+    mean_hag = np.nanmean(hag_arr)
+    median_hag = np.nanmedian(hag_arr)
+    stats = ["lowest_10th",lowest_10th_per, "mean",mean_hag, "median", median_hag]
+    return(stats)
+
+
+###########################################################
+# Extract Vegetation Heigh Strata
+############################################################
+
 ##########
 # HAG DEM Range Filtered
 ##########
@@ -239,3 +311,42 @@ def rasterize_count(full_input_lid, full_output_tif):
     rasterize_command = ['pdal', 'pipeline', json_full_path, writer, reader]
     subprocess.run(rasterize_command)
 
+#######################################################
+##########
+# Create Command Template
+##########
+# Many other commands can be run in parallel, but it is beneficial to rasterize using a combined pipeline menthod
+#   where we merge las files in one stage and write to a raster in the next
+#   we can filter post-merging. This is helpful because it allows us to avoid discrepancies
+#   between tile boundaries in the final rasterized product. It also allows us to merge las files
+#   without having to write a large merged file or read in a merged file (saving disk memory)
+
+# input_path - path to lidar files (e.g. '/path/to/HAG/')
+def create_command_template(input_path):
+    onlyfiles = [f for f in os.listdir(input_path) if os.path.isfile(os.path.join(input_path, f))] # make a list of all filenames in directory
+    input_list = [input_path + s for s in onlyfiles] # make a list of full filename paths in directory
+    filename_dict = {} # initiate an empty dict to hold the readers
+    tags = ['']*len(input_list) # initiate an empty list, size = number of files
+    filenames = ['']*len(input_list) # repeat
+    for i in range(len(input_list)): # for each file, create a dictionary element with the values matching json formatting for file merging
+        filename_dict['filename_'+str(i)] = {'filename':input_list[i], 'tag':'A_'+str(i)}
+        tags[i] = 'A_'+str(i) # add a tag to the reader stage
+        filenames[i] = filename_dict[list(filename_dict)[i]] # Add all values to a list
+    
+    return(filenames, tags)
+
+#######################################################
+#########
+# Raster to Array
+#########
+# input: path - full file path
+# input: nd_value - num, no data value (i.e. -9999) 
+def raster_to_array(path, nd_value):
+    raster = gdal.Open(path) # open the file 
+    raster_arr = raster.GetRasterBand(1).ReadAsArray() #read the first raster band (in this case we know we are only working with single bands) and read to a 2D array
+    if raster_arr.dtype == 'int32':
+        raster_arr = raster_arr.astype(float)
+    raster_arr[raster_arr == nd_value] = np.nan # where the raster is equal to the provided no data value, set values to Nan
+    raster_arr_flat = raster_arr.flatten() # flatten the array (row-wise)
+    raster = None
+    return raster_arr_flat

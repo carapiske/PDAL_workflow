@@ -1,9 +1,0 @@
-{
-    "pipeline": [
-        {
-            "type": "filters.overlay",
-            "dimension": "Z",
-            "datasource": "SCB/supporting_files/bounding_box/hwy89_poly.shp"
-        }
-    ]
-}

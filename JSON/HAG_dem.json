@@ -11,7 +11,7 @@
         },
         {
             "type": "filters.range",
-            "limits": "Z[-0.2:70]"
+            "limits": "Z[-0.3:100]"
         }
     ]
 }

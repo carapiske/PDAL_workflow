@@ -1,0 +1,17 @@
+{
+    "pipeline": [
+        "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/NAD83_NAD83_epoch2010/WSI_MRB_20111017_276393_4165936.las",
+        {
+            "type": "filters.range",
+            "limits": "Classification[2:2]"
+        },
+        {
+            "type": "writers.gdal",
+            "output_type": "mean",
+            "resolution": "1.0",
+            "radius": "0.7",
+            "window_size": 3,
+            "filename": "MRB/Merced_lidar/Watershed_Sciences/WSI_MRB_20111017/DEM/WSI_MRB_20111017_BE_6070.tif"
+        }
+    ]
+}

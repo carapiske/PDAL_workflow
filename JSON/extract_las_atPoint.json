@@ -1,0 +1,29 @@
+{
+    "pipeline": [
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4367000.laz",
+            "tag": "input_stage"
+        },
+        {
+            "type": "filters.crop",
+            "point": "POINT(732492 4367119)",
+            "distance": 3,
+            "inputs": "input_stage",
+            "tag": "cropped"
+        },
+        {
+            "type": "filters.range",
+            "limits": "Classification[2:2]",
+            "inputs": "cropped",
+            "tag": "range"
+        },
+        {
+            "type": "writers.text",
+            "format": "csv",
+            "order": "Z",
+            "write_header": false,
+            "keep_unspecified": false,
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/vertical_bias_correction/las_vals_target_pts/field_data_732492_4367119.csv"
+        }
+    ]
+}

@@ -50,7 +50,8 @@ Snow-off Flights
 
 See PDAL documentation for more information about the structure of pipelines. Here, instead of using python PDAL bindings, we run processes using the subprocess module. We use a combination of functions that call json files and processes that directly call PDAL functions depending on the process.
 
-Parallelization is initiated using multiple processes. Because the modules require functions to be called from imported packages, see lidar_functions.py for functions. Typically these functions execute pipelines using json files which allows us to alter json files in the script without altering the lidar_functions packages
+Parallelization is initiated using multiple processes. Because the modules require functions to be called from imported packages, see lidar_functions.py for functions. Typically these functions execute pipelines using json files which allows us to alter json files in the script without altering the lidar_functions packages.<br>
+The basic outline of parallelization involves listing all the files in a directory, creating a list of the full file paths along with output file paths and executing the function on these two lists. 
 
 
 # Raster Processing Workflow

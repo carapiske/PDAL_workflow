@@ -1,0 +1,534 @@
+{
+    "pipeline": [
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_729096_4367000.laz",
+            "tag": "A_0"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_729000_4365000.laz",
+            "tag": "A_1"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_730072_4368000.laz",
+            "tag": "A_2"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_729000_4366000.laz",
+            "tag": "A_3"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_730000_4365000.laz",
+            "tag": "A_4"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731000_4364678.laz",
+            "tag": "A_5"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_730000_4367000.laz",
+            "tag": "A_6"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731000_4365000.laz",
+            "tag": "A_7"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731000_4367000.laz",
+            "tag": "A_8"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731000_4368000.laz",
+            "tag": "A_9"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731945_4370000.laz",
+            "tag": "A_10"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731000_4366000.laz",
+            "tag": "A_11"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4365000.laz",
+            "tag": "A_12"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4364479.laz",
+            "tag": "A_13"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4366000.laz",
+            "tag": "A_14"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4367000.laz",
+            "tag": "A_15"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4368000.laz",
+            "tag": "A_16"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4369000.laz",
+            "tag": "A_17"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733530_4371000.laz",
+            "tag": "A_18"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4365000.laz",
+            "tag": "A_19"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4368000.laz",
+            "tag": "A_20"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4370000.laz",
+            "tag": "A_21"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4369000.laz",
+            "tag": "A_22"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735003_4363928.laz",
+            "tag": "A_23"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4366000.laz",
+            "tag": "A_24"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4367000.laz",
+            "tag": "A_25"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4368000.laz",
+            "tag": "A_26"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4365000.laz",
+            "tag": "A_27"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4371000.laz",
+            "tag": "A_28"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4364000.laz",
+            "tag": "A_29"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4372000.laz",
+            "tag": "A_30"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4366000.laz",
+            "tag": "A_31"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4368000.laz",
+            "tag": "A_32"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4365000.laz",
+            "tag": "A_33"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736340_4363700.laz",
+            "tag": "A_34"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4371000.laz",
+            "tag": "A_35"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4369000.laz",
+            "tag": "A_36"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4363739.laz",
+            "tag": "A_37"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4367000.laz",
+            "tag": "A_38"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4366000.laz",
+            "tag": "A_39"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4364000.laz",
+            "tag": "A_40"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4368000.laz",
+            "tag": "A_41"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4372000.laz",
+            "tag": "A_42"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4371000.laz",
+            "tag": "A_43"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4369000.laz",
+            "tag": "A_44"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4373000.laz",
+            "tag": "A_45"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4363740.laz",
+            "tag": "A_46"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4366000.laz",
+            "tag": "A_47"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4364000.laz",
+            "tag": "A_48"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4367000.laz",
+            "tag": "A_49"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4368000.laz",
+            "tag": "A_50"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4369000.laz",
+            "tag": "A_51"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4370000.laz",
+            "tag": "A_52"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4371000.laz",
+            "tag": "A_53"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4372000.laz",
+            "tag": "A_54"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4364081.laz",
+            "tag": "A_55"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4366000.laz",
+            "tag": "A_56"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4367000.laz",
+            "tag": "A_57"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4368000.laz",
+            "tag": "A_58"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4370000.laz",
+            "tag": "A_59"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4371000.laz",
+            "tag": "A_60"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_740000_4366488.laz",
+            "tag": "A_61"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4365000.laz",
+            "tag": "A_62"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4366000.laz",
+            "tag": "A_63"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4367000.laz",
+            "tag": "A_64"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4369000.laz",
+            "tag": "A_65"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4370000.laz",
+            "tag": "A_66"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_741000_4368918.laz",
+            "tag": "A_67"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_740000_4368000.laz",
+            "tag": "A_68"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_740000_4369000.laz",
+            "tag": "A_69"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_740000_4370000.laz",
+            "tag": "A_70"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_740000_4371000.laz",
+            "tag": "A_71"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_741000_4369173.laz",
+            "tag": "A_72"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_728879_4365393.laz",
+            "tag": "A_73"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_728943_4366108.laz",
+            "tag": "A_74"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_729807_4364959.laz",
+            "tag": "A_75"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_730001_4364823.laz",
+            "tag": "A_76"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_730000_4366000.laz",
+            "tag": "A_77"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_731442_4369000.laz",
+            "tag": "A_78"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4364314.laz",
+            "tag": "A_79"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_732000_4370000.laz",
+            "tag": "A_80"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4367000.laz",
+            "tag": "A_81"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733000_4366000.laz",
+            "tag": "A_82"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_733624_4372000.laz",
+            "tag": "A_83"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734455_4363894.laz",
+            "tag": "A_84"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4364000.laz",
+            "tag": "A_85"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4370000.laz",
+            "tag": "A_86"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_734000_4369000.laz",
+            "tag": "A_87"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735493_4373000.laz",
+            "tag": "A_88"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4367000.laz",
+            "tag": "A_89"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_735000_4370000.laz",
+            "tag": "A_90"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4365000.laz",
+            "tag": "A_91"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4370000.laz",
+            "tag": "A_92"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_736000_4372000.laz",
+            "tag": "A_93"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_737000_4365000.laz",
+            "tag": "A_94"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4364000.laz",
+            "tag": "A_95"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4365000.laz",
+            "tag": "A_96"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4369000.laz",
+            "tag": "A_97"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_738000_4372000.laz",
+            "tag": "A_98"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4368000.laz",
+            "tag": "A_99"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_739000_4371000.laz",
+            "tag": "A_100"
+        },
+        {
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/laz/NCALM_SCB_20201120_740000_4367000.laz",
+            "tag": "A_101"
+        },
+        {
+            "type": "filters.merge",
+            "tag": "merged",
+            "inputs": [
+                "A_0",
+                "A_1",
+                "A_2",
+                "A_3",
+                "A_4",
+                "A_5",
+                "A_6",
+                "A_7",
+                "A_8",
+                "A_9",
+                "A_10",
+                "A_11",
+                "A_12",
+                "A_13",
+                "A_14",
+                "A_15",
+                "A_16",
+                "A_17",
+                "A_18",
+                "A_19",
+                "A_20",
+                "A_21",
+                "A_22",
+                "A_23",
+                "A_24",
+                "A_25",
+                "A_26",
+                "A_27",
+                "A_28",
+                "A_29",
+                "A_30",
+                "A_31",
+                "A_32",
+                "A_33",
+                "A_34",
+                "A_35",
+                "A_36",
+                "A_37",
+                "A_38",
+                "A_39",
+                "A_40",
+                "A_41",
+                "A_42",
+                "A_43",
+                "A_44",
+                "A_45",
+                "A_46",
+                "A_47",
+                "A_48",
+                "A_49",
+                "A_50",
+                "A_51",
+                "A_52",
+                "A_53",
+                "A_54",
+                "A_55",
+                "A_56",
+                "A_57",
+                "A_58",
+                "A_59",
+                "A_60",
+                "A_61",
+                "A_62",
+                "A_63",
+                "A_64",
+                "A_65",
+                "A_66",
+                "A_67",
+                "A_68",
+                "A_69",
+                "A_70",
+                "A_71",
+                "A_72",
+                "A_73",
+                "A_74",
+                "A_75",
+                "A_76",
+                "A_77",
+                "A_78",
+                "A_79",
+                "A_80",
+                "A_81",
+                "A_82",
+                "A_83",
+                "A_84",
+                "A_85",
+                "A_86",
+                "A_87",
+                "A_88",
+                "A_89",
+                "A_90",
+                "A_91",
+                "A_92",
+                "A_93",
+                "A_94",
+                "A_95",
+                "A_96",
+                "A_97",
+                "A_98",
+                "A_99",
+                "A_100",
+                "A_101"
+            ]
+        },
+        {
+            "type": "filters.range",
+            "limits": "Classification![7:7]",
+            "inputs": "merged",
+            "tag": "ranged"
+        },
+        {
+            "type": "writers.gdal",
+            "output_type": "count",
+            "resolution": "1.0",
+            "bounds": "([730235.96, 738826.45], [4364741.66, 4372273.16])",
+            "radius": "0.7",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/counts/NCALM_SCB_20201120_counts.tif"
+        }
+    ]
+}
