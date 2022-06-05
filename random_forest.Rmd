@@ -23,8 +23,13 @@ library(fs)
 library(lubridate)
 library(ggcorrplot)
 library("Hmisc")
+require(caTools)
 
 
+```
+
+```{r, setup, include=FALSE}
+knitr::opts_knit$set(root.dir = 'G:/')
 ```
 
 See: <https://towardsdatascience.com/random-forest-in-r-f66adf80ec9>
@@ -33,26 +38,41 @@ See: <https://towardsdatascience.com/random-forest-in-r-f66adf80ec9>
 
 ```{r}
 # Load in rasters as raster datasets
-src_dir = "/Volumes/Piske_lidar/"
 NCALM_2008_SWE <- 
-  raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/SWE/NCALM_SCB_20080210_SWE_30m.tif",sep=""))
+  raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/SWE/NCALM_SCB_20080210_SWE_30m.tif")
 
-NCALM_2014_elev <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_BE_30m.tif",sep=""))
+NCALM_2014_elev <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_BE_30m.tif")
 
-NCALM_2014_aspect <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_aspect_30m.tif",sep=""))
+NCALM_2014_aspect <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_aspect_30m.tif")
 
-NCALM_2014_slope <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_slope_30m.tif",sep=""))
+NCALM_2014_slope <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_slope_30m.tif")
 
-NCALM_2014_nness <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_nness_30m.tif",sep=""))
-
-NCALM_2014_fVEG <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/",sep=""))
-
-NCALM_2014_DNC <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_DNC_30m.tif",sep=""))
-
-NCALM_2014_clumpSize <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_clumpSize_30m.tif",sep=""))
+NCALM_2014_nness <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_nness_30m.tif")
+NCALM_2014_eness <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_Eness_30m.tif")
 
 
-NCALM_2014_CHM <- raster(paste(src_dir,"SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_2014_CHM_30m.tif",sep=""))
+NCALM_2014_fVEG <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/fVeg/NCALM_SCB_2014_fVEG_30m.tif")
+NCALM_2014_canopy_density <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/fVeg/NCALM_SCB_2014_canopy_density_30m.tif")
+
+NCALM_2014_DNC <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_DNC_30m.tif")
+
+NCALM_2014_clumpSize <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_clumpSize_30m.tif")
+NCALM_2014_opennness <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_SCB_2014_DNC_avgTAOheight_30m.tif")
+NCALM_2014_LAI <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_2014_LAI_prime_30m.tif")
+
+
+NCALM_2014_CHM <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/NCALM_2014_CHM_30m.tif")
+
+ASO_20160326_deltaAcc <- raster("SCB/stats/delta_accumulation_rasters/ASO_20160326_deltaAccumulation.tif")
+ASO_20160326_deltaAcc_abs <- raster("SCB/stats/delta_accumulation_rasters/ASO_20160326_deltaAccumulation_abs.tif")
+ASO_20160326_weight <- raster("SCB/Sagehen_lidar/ASO/ASO_SCB_20160326/snow_depth/ASO_SCB_20160326_SD_binaryDen_30m.tif")
+
+NCALM_20080210_deltaAcc <- raster("SCB/stats/delta_accumulation_rasters/NCALM_20080210_deltaAccumulation.tif")
+NCALM_20080210_deltaAcc_abs <- raster("SCB/stats/delta_accumulation_rasters/NCALM_20080210_deltaAccumulation_abs.tif")
+
+NCALM_20080210_weight <- raster("SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/snow_depth/NCALM_SCB_20080210_SD_binaryDen_30m.tif")
+
+
 
 ```
 
@@ -63,24 +83,56 @@ NCALM_2014_elev_df <- as.data.frame(NCALM_2014_elev)
 NCALM_2014_aspect_df <- as.data.frame(NCALM_2014_aspect)
 NCALM_2014_slope_df <- as.data.frame(NCALM_2014_slope)
 NCALM_2014_nness_df <- as.data.frame(NCALM_2014_nness)
+NCALM_2014_eness_df <- as.data.frame(NCALM_2014_eness)
+NCALM_2014_canopy_density_df <- as.data.frame(NCALM_2014_canopy_density)
 
 NCALM_2014_fVEG_df <- as.data.frame(NCALM_2014_fVEG)
 NCALM_2014_DNC_df <- as.data.frame(NCALM_2014_DNC)
 NCALM_2014_clumpSize_df <- as.data.frame(NCALM_2014_clumpSize)
 NCALM_2014_CHM_df <- as.data.frame(NCALM_2014_CHM)
+NCALM_2014_openness_df <- as.data.frame(NCALM_2014_opennness)
+NCALM_2014_LAI_df <- as.data.frame(NCALM_2014_LAI)
+
+
+ASO_20160326_deltaAcc_df <- as.data.frame(ASO_20160326_deltaAcc)
+ASO_20160326_deltaAcc_abs_df <- as.data.frame(ASO_20160326_deltaAcc_abs)
+ASO_20160326_weights_df <- as.data.frame(ASO_20160326_weight)
+
+
+NCALM_20080210_deltaAcc_df <- as.data.frame(NCALM_20080210_deltaAcc)
+NCALM_20080210_deltaAcc_abs_df <- as.data.frame(NCALM_20080210_deltaAcc_abs)
+NCALM_20080210_weights_df <- as.data.frame(NCALM_20080210_weight)
+
+
 ```
+
+
+
+
 
 ```{r}
 #Combine into a single dataframe
 
-terrain_df <- data.frame(NCALM_2014_elev_df, NCALM_2014_aspect_df, NCALM_2014_slope_df, NCALM_2014_nness_df,NCALM_2014_fVEG_df,NCALM_2014_DNC_df,NCALM_2014_CHM_df)
-veg_df <- data.frame(NCALM_2014_fVEG_df,NCALM_2014_DNC_df,NCALM_2014_CHM_df)
+terrain_df <- data.frame(NCALM_2014_elev_df, NCALM_2014_aspect_df, NCALM_2014_slope_df, NCALM_2014_nness_df,NCALM_2014_eness_df, NCALM_2014_fVEG_df,NCALM_2014_DNC_df,NCALM_2014_CHM_df,NCALM_2014_openness_df,NCALM_2014_clumpSize_df, NCALM_2014_LAI_df,NCALM_2014_canopy_density_df)
+veg_df <- data.frame(NCALM_2014_fVEG_df,NCALM_2014_DNC_df,NCALM_2014_CHM_df, NCALM_2014_openness_df,NCALM_2014_LAI_df)
 
-colnames(terrain_df) <- c('Elev','Aspect','Slope','Nness','fVeg','DNC','CHM')
-colnames(veg_df) <- c('fVeg','DNC','CHM')
+colnames(terrain_df) <- c('Elev','Aspect','Slope','Nness','Eness','fVeg','DNC','CHM','Open','Clump','LAI','Canopy_Density')
+colnames(veg_df) <- c('fVeg','DNC','CHM','Open','LAI')
+
+# ASO Snow Data
+ASO_df <- data.frame(NCALM_2014_elev_df, NCALM_2014_nness_df, NCALM_2014_eness_df, NCALM_2014_fVEG_df, NCALM_2014_openness_df, ASO_20160326_deltaAcc_df, ASO_20160326_weights_df)
+colnames(ASO_df) <- c('elev','nness','eness','fVeg','openness','delta_SWE_20160326', 'weights')
+
+ASO_abs_df <- data.frame(NCALM_2014_nness_df, NCALM_2014_eness_df, NCALM_2014_fVEG_df, NCALM_2014_openness_df, NCALM_2014_canopy_density_df, ASO_20160326_deltaAcc_abs_df)
+colnames(ASO_abs_df) <- c('nness','eness','fVeg','openness','canopy_density','abs_delta_SWE_20160326')
 
 
-NCALM_df <- data.frame(NCALM_2008_SWE_df, NCALM_2014_elev_df, NCALM_2014_aspect_df, NCALM_2014_slope_df, NCALM_2014_nness_df)
+# NCALM Snow Data
+NCALM_df <- data.frame(NCALM_2014_elev_df, NCALM_2014_nness_df, NCALM_2014_eness_df, NCALM_2014_fVEG_df, NCALM_2014_openness_df, NCALM_2014_canopy_density_df, NCALM_20080210_deltaAcc_df, NCALM_20080210_weights_df)
+colnames(NCALM_df) <- c('nness','eness','fVeg','openness','canopy_density','delta_SWE_20080210')
+
+NCALM_abs_df <- data.frame(NCALM_2014_nness_df, NCALM_2014_eness_df, NCALM_2014_fVEG_df, NCALM_2014_openness_df, NCALM_2014_LAI_df, NCALM_2014_canopy_density_df, NCALM_20080210_deltaAcc_abs_df)
+colnames(NCALM_abs_df) <- c('nness','eness','fVeg','openness','LAI_prime','canopy_density','abs_delta_SWE_20080210')
 
 ```
 
@@ -99,26 +151,63 @@ sapply(terrain_df, class)
 # check for missing values
 colSums(is.na(terrain_df))
 terrain_df <- na.omit(terrain_df)
+veg_df <- na.omit(veg_df)
+ASO_df <- na.omit(ASO_df)
+ASO_abs_df <- na.omit(ASO_abs_df)
+NCALM_df <- na.omit(NCALM_df)
+
+NCALM_abs_df <- na.omit(NCALM_abs_df)
+#colSums(is.na(NCALM_df))
+
 ```
 
 ```{r}
 # make sure it worked
-colSums(is.na(terrain_df))
+#colSums(is.na(terrain_df))
+#colSums(is.na(ASO_df))
+summary(ASO_df)
+```
+```{r}
+# now drop the weights column
+weights_2016 <- ASO_df[['weights']]
+weights_2008 <- NCALM_df[['weights']]
+
+ASO_df = subset(ASO_df, select = c('elev','nness','eness','fVeg','openness','delta_SWE_20160326'))
+# NCALM_df = subset(NCALM_df, select = c('elev','nness','eness','fVeg','openness','canopy_density','delta_SWE_20080210'))
+```
+
+
+
+
+## Basic Relationships
+
+```{r}
+# Change point shapes and colors
+open_LAI <- ggplot(terrain_df, aes(x=Open, y=LAI)) +
+  geom_point() + 
+  labs(title="Openness vs. LAI'",
+       x="Openness (m/m)", y = "LAI' (m)")
+open_LAI
+```
+
+```{r}
+open_LAI + scale_x_continuous(trans='log10')+
+  scale_y_continuous(trans='log10')
 ```
 
 ## Correlation Matrix
 
-See: https://dominicroye.github.io/en/2019/tidy-correlation-tests-in-r/
-
-```{r}
-ggcorrplot(cor(terrain_df))
-
-```
-
+See: <https://dominicroye.github.io/en/2019/tidy-correlation-tests-in-r/>
 
 ```{r}
 cor_data = cor(terrain_df)
-corrplot(cor_data, method="color")
+corrplot(cor_data, method="number", diag=FALSE)
+
+
+## matrix in [20, 26], grid.col
+N1 = matrix(runif(80, 20, 26), 8)
+corrplot(cor_data, is.corr = FALSE, method = 'color', tl.pos = 'n',
+         col = COL1('YlGn'), cl.pos = 'b', addgrid.col = 'white', addCoef.col = 'grey50')
 
 ```
 
@@ -126,52 +215,159 @@ corrplot(cor_data, method="color")
 corrplot(cor(terrain_df), method = 'shade', order = 'AOE', diag = FALSE)
 
 ```
+
 ```{r}
-p_values <- rcorr(as.matrix(terrain))
+corrplot(cor(terrain_df), method = 'number', order = 'AOE', diag = FALSE)
+```
+
+```{r}
+testRes = cor.mtest(terrain_df, conf.level = 0.95)
+
+## specialized the insignificant value according to the significant level
+corrplot(cor(terrain_df), p.mat = testRes$p, order = 'hclust',diag=FALSE)
+```
+
+```{r}
+## add all p-values
+corrplot(cor(terrain_df), p.mat = testRes$p, insig = 'p-value', sig.level = -1, diag=FALSE)
+```
+
+# RFM
+
+See: <https://towardsdatascience.com/random-forest-in-r-f66adf80ec9>
+
+## ASO Delta Change %
+
+```{r}
+sample = sample.split(ASO_df$delta_SWE_20160326, SplitRatio = .75)
+train = subset(ASO_df, sample == TRUE)
+test  = subset(ASO_df, sample == FALSE)
+dim(train)
+dim(test)
+```
+
+
+
+```{r}
+start_time <- Sys.time()
+
+ASO_20160326_deltaAcc_RF <- randomForest(delta_SWE_20160326~.,data=train, ntree=300, mtry = 3)
+end_time <- Sys.time()
+
 
 ```
 
 
 
-
-
-
 ```{r}
-terrain <- terrain_df[,c("Elev","Slope","Aspect","Nness")]
-veg <- terrain_df[,c("fVeg","DNC","CHM")]
-rownames(veg) <- 1:nrow(veg)    # Assign sequence to row names
-
+print(ASO_20160326_deltaAcc_RF)
+print(end_time - start_time)
+#Evaluate variable importance
+#importance(rf)
+varImpPlot(ASO_20160326_deltaAcc_RF)
 ```
 
 
 ```{r}
-
-
+print(rf)
+#Evaluate variable importance
+#importance(rf)
+varImpPlot(rf)
 ```
-
-
-
-
 ```{r}
-cor.test(x=terrain_df,y=terrain_df)
+partialPlot(rf,train,elev)
 ```
 
 
 
 
+```{r}
+
+  
+# Predicting the Test set results
+y_pred = predict(rf, newdata = test)
+  
+# Confusion Matrix
+confusion_mtx = table(test[, 6], y_pred)
+
+# Plotting model
+plot(rf)
+
+```
+## ASO Delta Change Absolute
+
+
+```{r}
+sample = sample.split(ASO_abs_df$abs_delta_SWE_20160326, SplitRatio = .75)
+train = subset(ASO_abs_df, sample == TRUE)
+test  = subset(ASO_abs_df, sample == FALSE)
+dim(train)
+dim(test)
+```
+
+
+
+```{r}
+rf <- randomForest(abs_delta_SWE_20160326~.,data=train)
+```
 
 
 
 
+```{r}
+print(rf)
+#Evaluate variable importance
+#importance(rf)
+varImpPlot(rf)
+```
+```{r}
+
+  
+# Predicting the Test set results
+y_pred = predict(rf, newdata = test)
+  
+# Confusion Matrix
+confusion_mtx = table(test[, 6], y_pred)
+
+# Plotting model
+plot(rf)
+
+```
+
+
+
+## NCALM Delta Change %
+
+
+```{r}
+NCALM_df <- na.exclude(NCALM_df)
+colSums(is.na(NCALM_df))
+
+```
+
+
+```{r}
+sample_NCALM = sample.split(NCALM_df$delta_SWE_20080210, SplitRatio = .75)
+train_NCALM = subset(NCALM_df, sample == TRUE)
+test_NCALM  = subset(NCALM_df, sample == FALSE)
+dim(train_NCALM)
+dim(test_NCALM)
+```
+
+
+
+```{r}
+rf_NCALM <- randomForest(delta_SWE_20080210~.,data=train_NCALM,na.action=na.exclude)
+```
 
 
 
 
+```{r}
+print(rf_NCALM)
+#Evaluate variable importance
 
-
-
-
-
-
-
+#importance(rf_NCALM)
+varImpPlot(rf_NCALM)
+```
 

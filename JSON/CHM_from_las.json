@@ -523,12 +523,18 @@
             "tag": "corrected"
         },
         {
+            "type": "filters.range",
+            "limits": "Z[-0.15:70]",
+            "inputs": "corrected",
+            "tag": "ranged"
+        },
+        {
             "type": "writers.gdal",
             "output_type": "max",
             "resolution": "1.0",
             "bounds": "([730235.96, 738826.45], [4364741.66, 4372273.16])",
             "radius": "0.7",
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/CHM/NCALM_SCB_2020_CHM_LT1pt5.tif"
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/CHM/NCALM_SCB_2020_CHM.tif"
         }
     ]
 }
