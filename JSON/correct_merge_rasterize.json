@@ -379,7 +379,7 @@
         },
         {
             "type": "filters.range",
-            "limits": "Z[:5]",
+            "limits": "Classification[2:2]",
             "inputs": "corrected",
             "tag": "ranged"
         },
@@ -389,7 +389,7 @@
             "resolution": "1.0",
             "radius": "0.7",
             "bounds": "([730235.96, 738826.45], [4364741.66, 4372273.16])",
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/corrected_tif/NCALM_SCB_20220321_vbc_5.tif"
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/corrected_tif/NCALM_SCB_20220321_ground_vbc.tif"
         }
     ]
 }

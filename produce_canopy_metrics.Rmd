@@ -15,6 +15,8 @@ See: https://r-lidar.github.io/lidRbook/index.html
 # import libraries, wet WD
 library(lidR)
 library(raster)
+library(terra)
+#remotes::install_github("Jean-Romain/lidRplugins")
 ```
 
 
@@ -23,14 +25,16 @@ library(raster)
 knitr::opts_knit$set(root.dir = '/Volumes/Piske_lidar')
 ```
 
-
-# Local Maximum Filter on a CHM
+# 2014
+## Individual Tree Detection: Local Maximum Filter on a CHM
 
 
 ```{r}
-CHM <- raster('SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/CHM/NCALM_2014_CHM_max.tif')
-projection(CHM) <- '+proj=utm +zone=10 +datum=WGS84 +units=m +no_defs'
-CHM_locateTrees <- locate_trees(CHM, lmf(5))
+#CHM <- terra::rast(x = '/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/CHM/NCALM_SCB_2020_CHM.tif')
+CHM <- raster('/SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/CHM/NCALM_2014_CHM_max.tif')
+CHM_2014 <-  readAll(CHM)
+projection(CHM_2014) <- '+proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs'
+CHM_locateTrees <- locate_trees(CHM_2014, lmf(3))
 
 ```
 
@@ -44,36 +48,120 @@ ymax       : 4367858
 
 ```
 
+```{r}
+# run in command line
+#plot(CHM_b, main = "CHM")
+#sm <- drawExtent()
+```
 
 
 ```{r}
 par(mfrow=c(1,1))
 col <- height.colors(50)
-plot(CHM, main = "CHM", col = col, ext = sm); plot(sf::st_geometry(CHM_locateTrees), add = T, pch =3)
+plot(CHM_2014, main = "CHM", col = col, ext = sm); plot(sf::st_geometry(CHM_locateTrees), add = T, pch =3)
 ```
 
 ```{r}
+# safe the tree coordinates to dataframe
 tree_coords <-  sf::st_coordinates(CHM_locateTrees)
 tree_coords_df <- data.frame(tree_coords)
+tree_coords_shp <- tree_coords_df
+coordinates(tree_coords_shp) <- c('X','Y')
+proj4string(tree_coords_shp)<- CRS("+proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+raster::shapefile(tree_coords_shp, "/SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/TAO/NCALM_SCB_2014_TAO_3m.shp")
 ```
 
 ```{r}
-write.csv(tree_coords_df,'SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/tree_coordinates.csv', row.names = FALSE)
+# write to csv
+# write.csv(tree_coords_df,'/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/tree_coordinates.csv', row.names = FALSE)
 
 ```
 
+
+## Individual Tree Segmentation
 
 
 ```{r}
-counts = raster::rasterize(tree_coords, CHM, fun= 'count')
+algo <- dalponte2016(CHM_2014, CHM_locateTrees)
+
+crowns <- algo()
 ```
 
 ```{r}
-CHM_locateTrees$geometry
+writeRaster(crowns,'/SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/canopy_metrics/veg_structure/TAO/NCALM_SCB_2014_tree_crowns_3m_Dalponte.tif',options=c('TFW=YES'))
+
 ```
 
 
 
+# 2020
+## Individual Tree Detection: Local Maximum Filter on a CHM
+
+
+```{r}
+#CHM <- terra::rast(x = '/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/CHM/NCALM_SCB_2020_CHM.tif')
+CHM <- raster('/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/CHM/NCALM_SCB_20201120_CHM.tif')
+CHM_b <-  readAll(CHM)
+projection(CHM_b) <- '+proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs'
+CHM_locateTrees <- locate_trees(CHM_b, lmf(3))
+
+```
+
+class      : Extent 
+xmin       : 734043.2 
+xmax       : 734331.1 
+ymin       : 4367520 
+ymax       : 4367858 
+
+```{r}
+
+```
+
+```{r}
+# run in command line
+#plot(CHM_b, main = "CHM")
+#sm <- drawExtent()
+```
+
+
+```{r}
+par(mfrow=c(1,1))
+col <- height.colors(50)
+plot(CHM_b, main = "CHM", col = col, ext = sm); plot(sf::st_geometry(CHM_locateTrees), add = T, pch =3)
+```
+
+```{r}
+# safe the tree coordinates to dataframe
+tree_coords <-  sf::st_coordinates(CHM_locateTrees)
+tree_coords_df <- data.frame(tree_coords)
+tree_coords_shp <- tree_coords_df
+coordinates(tree_coords_shp) <- c('X','Y')
+proj4string(tree_coords_shp)<- CRS("+proj=utm +zone=10 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs")
+
+raster::shapefile(tree_coords_shp, "/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120//canopy_metrics/veg_structure/TAO/NCALM_SCB_20201120_TAO_3m.shp")
+```
+
+```{r}
+# write to csv
+# write.csv(tree_coords_df,'/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/tree_coordinates.csv', row.names = FALSE)
+
+```
+
+
+## Individual Tree Segmentation
+
+
+```{r}
+algo <- dalponte2016(CHM_b, CHM_locateTrees)
+
+crowns <- algo()
+```
+
+```{r}
+writeRaster(crowns,'/SCB/Sagehen_lidar/NCALM/NCALM_SCB_20201120/canopy_metrics/veg_structure/TAO/NCALM_SCB_20201120_tree_crowns_3m_Dalponte.tif',options=c('TFW=YES'))
+
+```
 
 
 
