@@ -1,296 +1,256 @@
 {
     "pipeline": [
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_731000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_730000_4365163.las",
             "tag": "A_0"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_730000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_730000_4366000.las",
             "tag": "A_1"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_731000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_730000_4367000.las",
             "tag": "A_2"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_731000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_730000_4369000.las",
             "tag": "A_3"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_731000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_730000_4368000.las",
             "tag": "A_4"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_731000_4365238.las",
             "tag": "A_5"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_731000_4366000.laz",
             "tag": "A_6"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_731000_4367000.laz",
             "tag": "A_7"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_731000_4368000.laz",
             "tag": "A_8"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4371000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_731000_4369000.laz",
             "tag": "A_9"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732000_4365046.laz",
             "tag": "A_10"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732000_4366000.laz",
             "tag": "A_11"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732000_4367000.laz",
             "tag": "A_12"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732000_4368000.laz",
             "tag": "A_13"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732000_4369000.laz",
             "tag": "A_14"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4371000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732017_4370000.laz",
             "tag": "A_15"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4364000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_732072_4371000.laz",
             "tag": "A_16"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4365000.laz",
             "tag": "A_17"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4366000.laz",
             "tag": "A_18"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4367000.laz",
             "tag": "A_19"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4368000.laz",
             "tag": "A_20"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4369000.las",
             "tag": "A_21"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4372000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4370000.las",
             "tag": "A_22"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4364000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733000_4371000.las",
             "tag": "A_23"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_733438_4364743.las",
             "tag": "A_24"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4364936.las",
             "tag": "A_25"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4365000.las",
             "tag": "A_26"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4366000.las",
             "tag": "A_27"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4367000.las",
             "tag": "A_28"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4371000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4368000.las",
             "tag": "A_29"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4364000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4369000.las",
             "tag": "A_30"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4370000.las",
             "tag": "A_31"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_734000_4371000.las",
             "tag": "A_32"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4365126.las",
             "tag": "A_33"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4366000.las",
             "tag": "A_34"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4367000.las",
             "tag": "A_35"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4371000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4368000.las",
             "tag": "A_36"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4372000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4369000.las",
             "tag": "A_37"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4370000.las",
             "tag": "A_38"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_735000_4371000.las",
             "tag": "A_39"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4365374.las",
             "tag": "A_40"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4366000.las",
             "tag": "A_41"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4367000.las",
             "tag": "A_42"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4371000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4368000.las",
             "tag": "A_43"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4364000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4369000.las",
             "tag": "A_44"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4370000.las",
             "tag": "A_45"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_736000_4371000.las",
             "tag": "A_46"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4365208.las",
             "tag": "A_47"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4366000.las",
             "tag": "A_48"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4367000.las",
             "tag": "A_49"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4368000.las",
             "tag": "A_50"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4369000.las",
             "tag": "A_51"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4370000.las",
             "tag": "A_52"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4368000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_737000_4371000.las",
             "tag": "A_53"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4370000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_738000_4365327.las",
             "tag": "A_54"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_730000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_738000_4366000.las",
             "tag": "A_55"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_730000_4365000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_738000_4367000.las",
             "tag": "A_56"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_738000_4368000.las",
             "tag": "A_57"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_732000_4367000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_738000_4369000.las",
             "tag": "A_58"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4364000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_739000_4365522.las",
             "tag": "A_59"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_733000_4369000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_739000_4366000.las",
             "tag": "A_60"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4366000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_739000_4367000.las",
             "tag": "A_61"
         },
         {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_734000_4371000.laz",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/HAG/NCALM_SCB_20080210_739000_4368000.las",
             "tag": "A_62"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4367000.laz",
-            "tag": "A_63"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_735000_4372000.laz",
-            "tag": "A_64"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_736000_4368000.laz",
-            "tag": "A_65"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4364000.laz",
-            "tag": "A_66"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_737000_4369000.laz",
-            "tag": "A_67"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_738000_4366000.laz",
-            "tag": "A_68"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4364000.laz",
-            "tag": "A_69"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_739000_4369000.laz",
-            "tag": "A_70"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_730000_4367000.laz",
-            "tag": "A_71"
-        },
-        {
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/HAG/NCALM_SCB_20220321_731000_4365000.laz",
-            "tag": "A_72"
         },
         {
             "type": "filters.merge",
@@ -358,28 +318,18 @@
                 "A_59",
                 "A_60",
                 "A_61",
-                "A_62",
-                "A_63",
-                "A_64",
-                "A_65",
-                "A_66",
-                "A_67",
-                "A_68",
-                "A_69",
-                "A_70",
-                "A_71",
-                "A_72"
+                "A_62"
             ]
         },
         {
             "type": "filters.assign",
-            "value": "Z=Z-0.048",
+            "value": "Z=Z-0.03",
             "inputs": "merged",
             "tag": "corrected"
         },
         {
             "type": "filters.range",
-            "limits": "Classification[2:2]",
+            "limits": "Z[-0.3:70]",
             "inputs": "corrected",
             "tag": "ranged"
         },
@@ -388,8 +338,10 @@
             "output_type": "mean",
             "resolution": "1.0",
             "radius": "0.7",
+            "override_srs": "EPSG:6339",
             "bounds": "([730235.96, 738826.45], [4364741.66, 4372273.16])",
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20220321/corrected_tif/NCALM_SCB_20220321_ground_vbc.tif"
+            "inputs": "ranged",
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_20080210/corrected_tif/NCALM_SCB_20080210_vbc.tif"
         }
     ]
 }

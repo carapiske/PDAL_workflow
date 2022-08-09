@@ -499,7 +499,7 @@
         },
         {
             "type": "filters.range",
-            "limits": "Z[:3]",
+            "limits": "Z[-0.3:3]",
             "inputs": "corrected",
             "tag": "ranged"
         },

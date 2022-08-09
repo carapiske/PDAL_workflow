@@ -623,7 +623,7 @@
             "bounds": "([730235.96, 738826.45], [4364741.66, 4372273.16])",
             "radius": "0.7",
             "window_size": 3,
-            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/NCALM_2014_BE_scb_EPSG6339.tif"
+            "filename": "SCB/Sagehen_lidar/NCALM/NCALM_SCB_2014/DEM/SCB/NCALM_2014_BE.tif"
         }
     ]
 }

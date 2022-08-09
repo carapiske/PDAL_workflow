@@ -1,8 +1,8 @@
 # Lidar Processing Workflow
-This code processes raw lidar point clouds in order to calculate snow depth using PDAL. <br>
+This code processes raw LAS point clouds in order to calculate snow depth using PDAL. <br>
 Lidar data were provided by the Airborne Snow Observatory (ASO), the National Center for Airborne Laser Mapping (NCALM), and Watershed Sciences Inc. (WSI). <br>
 
-The goal of this project is to process snow depth to the one-meter spatial scale while maintaining conservative under-canopy estimates. Therefore, little interpolation occurs under-canopy. We follow these protocols in order to obtain a 1-m rasterized product (as opposed to the 3-m rasterized product provided by ASO on the NSIDC data portal). NCALM and WSI flights were obtained through OpenTopography.<br>
+The goal of this project is to process snow depth to the one-meter spatial scale while maintaining conservative under-canopy estimates. Therefore, little interpolation occurs under-canopy. We follow these protocols in order to obtain a 1-m rasterized product. NCALM and WSI flights were obtained through OpenTopography.<br>
 
 Here is the directory structure used to process files:
 The *base structure* for flights = source_watershed_yyyymmdd (e.g. ASO_SCB_20160326)
@@ -53,8 +53,65 @@ See PDAL documentation for more information about the structure of pipelines. He
 Parallelization is initiated using multiple processes. Because the modules require functions to be called from imported packages, see lidar_functions.py for functions. Typically these functions execute pipelines using json files which allows us to alter json files in the script without altering the lidar_functions packages.<br>
 The basic outline of parallelization involves listing all the files in a directory, creating a list of the full file paths along with output file paths and executing the function on these two lists. 
 
+Other pipelines are run by combining point clouds prior to rasterization.
+
+See lidar_workflow.ipynb for detailed documentation on processing. 
+
+
+
 
 # Raster Processing Workflow
-
+Much of this workflow involves multiplying logicals in order to filter out points that we throw out. 
+This means that it's important to be intentional about the specific NoData (or NaN) values because logicals automatically assign 0s to FALSE values. 
+(e.g. in our final stages, if we multiple snow depth by an "open" classified raster that contains 0s, we will propogate false 0s through our analyses)
+## Terrain classifications
 Separate scripts were created for raster and LAS files. 
 This script processes raster files created from the rasterization of LAS files. The goal is to run pixel-pixel calculations to retreive snow depth based on canopy structure classifications. 
+
+The workflow begins with terrain calculations. We target slope, aspect, northness (cos(aspect) * sin(slope)), eastness (sin(aspect) * sin(slope)), and elevation. 
+These calculations are all based on the BE raster created from classified las files. For unclassified las files, either classify using PDAL algorithms, or use last returns/lowest 10th percentile of returns in a pixel etc. based on 
+point density of the LAS files. 
+
+The easiest way to run these calculations is to load rasters into numpy arrays, run calculations, and save back to tifs. In general, I tried to run 
+most calculations raster-raster to avoid any mistakes with projections etc. 
+
+Each raster is filtered and cropped to the AOI. 
+
+## Vegetation Classifications
+The naming conventions here get a bit confusion, but to we start with the height strata defined from the lidar processing workflow. Each height strata raster
+contains the number of returns in the specified height (i.e. strata_neg0pt15_0pt15 contains the number of returns [-0.15:0.15))
+
+See our refined classification logic (https://docs.google.com/document/d/1-HndVgydwBWQGCzLMCvowkY_Idll0IDog-vd3OrTiio/edit) for more details. 
+
+Each raster is translated into a logical (1=true 0=false) depending on refined classification schemes. NoData not specified
+
+Each set of logical rasters that apply to classification schemes are multiplied. NoData = 0 <br>
+This results in four rasters representing open, tall, short, and understory canopy classifications <br> 
+
+Extract the height above ground values (using the CHM created from only points <=1.5) at potential short/understory locations in order to determine whether snow depth 
+is at the critical threshold that allows us to keep the pixel. 
+
+Combine tall/understory and short/open pixels.
+
+Create a single classified raster (1-open, 2-short, 3-understory, 4-tall)
+
+Filter out water bodies.
+
+
+### Characterize Canopy
+
+Target canopy characteristics that represent resilience to disturbance
+
+DNC - distance to nearest canopy 
+
+fVeg - fraction of a pixel classified as veg (CHM >= 3)
+
+canopy density - number of returns >=3 / total number of returns
+
+TAO - tree approximate object these data are retreived from R and rasterized in QGIS; using TAO height in each 1m pixel, create rasters w/ max height, avg height, number of TAO, 
+
+Openness index - DNC *2 (to get diameter) / avg. TAO height
+
+LAI' - canopy density * (canopy height / max canopy height) 
+
+Vegetation Buffer - Create a vegetation buffer around tree-classified points. The goal is to filter "open" pixels so that they aren't impacted by canopy. 
